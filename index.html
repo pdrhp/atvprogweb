@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de gastos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Controle de Gastos</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar Gasto</button>
+    </header>
+
+    <main class="main-content">
+      <div class="expenses-list">
+        <header class="expenses-header">
+          <span>Despesas</span>
+        </header>
+        <div id="expenses-content" class="expenses-content">
+          <div class="expenses-item">
+            <div class="flex-col dataCol">
+              <span>Nome: nomeDespesa</span>
+              <span>Valor: valorDespesa</span>
+              <span>Condicional: Condional</span>
+            </div>
+
+            <div class="flex-col dataCol">
+              <span>Data: Data</span>
+              <span>Categoria: Categoria</span>
+            </div>
+
+            <div class="flex-col dataCol">
+              <button class="btn btn-primary">Editar</button>
+              <button class="btn btn-danger">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- MODAL  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nova despesa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form_add">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Valor</label>
+                <input type="number" class="form-control" id="valor">
+              </div>
+              <div class="mb-3 flex-col">
+                <label for="message-text" class="col-form-label">Categoria</label>
+                <select class="text-black" id="categoria">
+                  <option class="text-black" value="Alimentação">Alimentação</option>
+                  <option class="text-black" value="Transporte">Transporte</option>
+                  <option class="text-black" value="Educação">Educação</option>
+                  <option class="text-black" value="Habitação">Habitação</option>
+                  <option class="text-black" value="Outros">Outros</option>
+                </select>
+              </div>
+              <div class="mb-3 flex-col alimentacao">
+                <label for="message-text" class="col-form-label">Restaurante</label>
+                <input type="text" class="form-control" id="Restaurante">
+              </div>
+              <div class="mb-3 flex-col transporte">
+                <label for="message-text" class="col-form-label">Tipo de transporte</label>
+                <select class="text-black" id="tipo_transporte">
+                  <option class="text-black" value="Ônibus">Ônibus</option>
+                  <option class="text-black" value="Carro/Gasolina">Carro/Gasolina</option>
+                  <option class="text-black" value="Uber">Uber</option>
+                </select>
+              </div>
+              <div class="mb-3 flex-col educacao">
+                <label for="message-text" class="col-form-label">Instituição</label>
+                <input type="text" class="form-control" id="instituicao">
+              </div>
+              <div class="mb-3 flex-col habitacao">
+                <label for="message-text" class="col-form-label">Tipo de Gasto</label>
+                <select class="text-black" id="tipo_habitacao">
+                  <option class="text-black" value="Aluguel">Aluguel</option>
+                  <option class="text-black" value="Condomínio">Condomínio</option>
+                  <option class="text-black" value="Financiamento">Financiamento</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="addButtonGasto" class="btn btn-primary">Adicionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="scripts/script.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

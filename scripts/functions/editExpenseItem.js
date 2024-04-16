@@ -1,25 +1,77 @@
-export function editExpenseItem(itemId, modal, listaGastos, inputNome, inputValor, selectCategoria, categoriaInputModal, inputRestaurante, inputInstituicao, inputTipoTransporte, inputTiboHabitacao){
-    const gasto = listaGastos.find(gasto => gasto.id == itemId);
+import { renderGastos } from "./renderGastos.js";
 
-    inputNome.value = gasto.nome;
-    inputValor.value = gasto.valor;
-    selectCategoria.value = gasto.constructor.name;
-    categoriaInputModal.value = gasto.constructor.name;
+export function editExpenseItem(
+  itemId,
+  modal,
+  listaGastos,
+  inputNome,
+  inputValor,
+  selectCategoria,
+  inputRestaurante,
+  inputInstituicao,
+  inputTipoTransporte,
+  inputTiboHabitacao,
+  editButton,
+  divListaGastos,
+  divInputAlimentacaoEdit,
+  divInputEducacaoEdit,
+  divInputHabitacaoEdit,
+  divInputTransporteEdit
+) {
+  const gasto = listaGastos.find((gasto) => gasto.id == itemId);
 
-    if(gasto.constructor.name === 'GastoAlimentacao'){
-        inputRestaurante.value = gasto.restaurante;
-    }
-    else if(gasto.constructor.name === 'GastoTransporte'){
-        inputTipoTransporte = gasto.tipo_transporte;
-    }
-    else if(gasto.constructor.name === 'GastoHabitacao'){
-        inputTiboHabitacao = gasto.tipo_habitacao;
-    }
-    else if(gasto.constructor.name === 'GastoEducacao'){
-        inputInstituicao = gasto.instituicao;
+  inputNome.value = gasto.nome;
+  inputValor.value = gasto.valor;
+  const className = gasto.constructor.name;
+  const category = className.replace("Gasto", "");
+  console.log(category);
+  selectCategoria.value = category;
+
+  selectCategoria.disabled = true;
+  divInputAlimentacaoEdit.style.display = 'none';
+  divInputTransporteEdit.style.display = 'none';
+  divInputHabitacaoEdit.style.display = 'none'
+  divInputEducacaoEdit.style.display = 'none';
+
+  console.log(gasto);
+
+
+  if (category === "Alimentacao") {
+    inputRestaurante.value = gasto.restaurante;
+    divInputAlimentacaoEdit.style.display = 'flex';
+  } else if (category === "Transporte") {
+    inputTipoTransporte.value = gasto.tipo_transporte;
+    divInputTransporteEdit.style.display = 'flex';
+  } else if (category === "Habitacao") {
+    inputTiboHabitacao.value = gasto.tipo_habitacao;
+    divInputHabitacaoEdit.style.display = 'flex'
+  } else if (category === "Educacao") {
+    inputInstituicao.value = gasto.instituicao;
+    divInputEducacaoEdit.style.display = 'flex';
+  }
+
+  var modalInstace = new bootstrap.Modal(modal);
+
+  modalInstace.show();
+
+  editButton.addEventListener("click", function () {
+    gasto.nome = inputNome.value;
+    gasto.valor = inputValor.value;
+
+    console.log(inputTipoTransporte.value);
+
+    if (gasto.constructor.name === "GastoAlimentacao") {
+      gasto.restaurante = inputRestaurante.value;
+    } else if (gasto.constructor.name === "GastoTransporte") {
+      gasto.tipo_transporte = inputTipoTransporte.value;
+    } else if (gasto.constructor.name === "GastoHabitacao") {
+      gasto.tipo_habitacao = inputTipoHabitacao.value;
+    } else if (gasto.constructor.name === "GastoEducacao") {
+      gasto.instituicao = inputInstituicao.value;
     }
 
-    var modalInstace = new bootstrap.Modal(modal);
+    modalInstace.hide();
 
-    modalInstace.show();
+    renderGastos(listaGastos, divListaGastos);
+  });
 }

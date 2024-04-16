@@ -17,25 +17,9 @@
       <div class="expenses-list">
         <header class="expenses-header">
           <span>Despesas</span>
+          <input id="filter" type="search"/>
         </header>
         <div id="expenses-content" class="expenses-content">
-          <div class="expenses-item">
-            <div class="flex-col dataCol">
-              <span>Nome: nomeDespesa</span>
-              <span>Valor: valorDespesa</span>
-              <span>Condicional: Condional</span>
-            </div>
-
-            <div class="flex-col dataCol">
-              <span>Data: Data</span>
-              <span>Categoria: Categoria</span>
-            </div>
-
-            <div class="flex-col dataCol">
-              <button class="btn btn-primary">Editar</button>
-              <button class="btn btn-danger">Excluir</button>
-            </div>
-          </div>
         </div>
       </div>
     </main>
@@ -61,6 +45,7 @@
               <div class="mb-3 flex-col">
                 <label for="message-text" class="col-form-label">Categoria</label>
                 <select class="text-black" id="categoria">
+                  <option class="text-black" hidden disabled selected value="Outros">Escolha uma opção</option>
                   <option class="text-black" value="Alimentação">Alimentação</option>
                   <option class="text-black" value="Transporte">Transporte</option>
                   <option class="text-black" value="Educação">Educação</option>
@@ -97,6 +82,67 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" id="addButtonGasto" class="btn btn-primary">Adicionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabelEdit" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nova despesa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form_edit">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nome:</label>
+                <input type="text" class="form-control" id="nome_edit">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Valor</label>
+                <input type="number" class="form-control" id="valor_edit">
+              </div>
+              <div class="mb-3 flex-col">
+                <label for="message-text" class="col-form-label">Categoria</label>
+                <select class="text-black" id="categoria_edit">
+                  <option class="text-black" value="Alimentação">Alimentação</option>
+                  <option class="text-black" value="Transporte">Transporte</option>
+                  <option class="text-black" value="Educação">Educação</option>
+                  <option class="text-black" value="Habitação">Habitação</option>
+                  <option class="text-black" value="Outros">Outros</option>
+                </select>
+              </div>
+              <div class="mb-3 flex-col alimentacao_edit">
+                <label for="message-text" class="col-form-label">Restaurante</label>
+                <input type="text" class="form-control" id="Restaurante_edit">
+              </div>
+              <div class="mb-3 flex-col transporte_edit">
+                <label for="message-text" class="col-form-label">Tipo de transporte</label>
+                <select class="text-black" id="tipo_transporte_edit">
+                  <option class="text-black" value="Ônibus">Ônibus</option>
+                  <option class="text-black" value="Carro/Gasolina">Carro/Gasolina</option>
+                  <option class="text-black" value="Uber">Uber</option>
+                </select>
+              </div>
+              <div class="mb-3 flex-col educacao_edit">
+                <label for="message-text" class="col-form-label">Instituição</label>
+                <input type="text" class="form-control" id="instituicao_edit">
+              </div>
+              <div class="mb-3 flex-col habitacao_edit">
+                <label for="message-text" class="col-form-label">Tipo de Gasto</label>
+                <select class="text-black" id="tipo_habitacao_edit">
+                  <option class="text-black" value="Aluguel">Aluguel</option>
+                  <option class="text-black" value="Condomínio">Condomínio</option>
+                  <option class="text-black" value="Financiamento">Financiamento</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="EditButtonGasto" class="btn btn-primary">Editar</button>
           </div>
         </div>
       </div>
